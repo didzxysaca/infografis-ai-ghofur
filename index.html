@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografis AI & Etika Internet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --tertiary: #ec4899;
+            --accent: #06b6d4;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1a1a2e 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Utility */
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 27, 75, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo i {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+        }
+
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            top: -100px;
+            left: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .orb2 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, #ec4899, #f43f5e);
+            bottom: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .orb3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+            top: 50%;
+            right: 10%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: #fff;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-alt {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #cbd5e1;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card-list {
+            list-style: none;
+            text-align: left;
+            color: #cbd5e1;
+        }
+
+        .card-list li {
+            padding: 0.3rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Impact Container */
+        .impact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .impact-box {
+            padding: 2.5rem;
+        }
+
+        .impact-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .positive-header {
+            color: #10b981;
+        }
+
+        .negative-header {
+            color: #ef4444;
+        }
+
+        .impact-header i {
+            font-size: 2rem;
+        }
+
+        .impact-header h3 {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .impact-list {
+            list-style: none;
+        }
+
+        .impact-list li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .impact-list li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .impact-icon {
+            font-weight: 700;
+            font-size: 1.2rem;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .impact-box.positive .impact-icon {
+            color: #10b981;
+        }
+
+        .impact-box.negative .impact-icon {
+            color: #ef4444;
+        }
+
+        .impact-list h4 {
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .impact-list p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        /* Ethics Grid */
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ethics-card {
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .ethics-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .ethics-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.3;
+            margin-bottom: 1rem;
+        }
+
+        .ethics-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .ethics-card p {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+        }
+
+        .ethics-examples {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+
+        .ethics-examples p {
+            color: #e2e8f0;
+            margin: 0.5rem 0;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            margin-top: 3rem;
+            overflow: hidden;
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-header h3 {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-col:first-child .comparison-header h3 i {
+            color: #10b981;
+        }
+
+        .comparison-col:last-child .comparison-header h3 i {
+            color: #ef4444;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .comparison-row:nth-child(even) {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-item {
+            padding: 1.5rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-item:last-child {
+            border-right: none;
+        }
+
+        .comparison-item h4 {
+            color: #10b981;
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-item.negative h4 {
+            color: #ef4444;
+        }
+
+        .comparison-item p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin: 3rem 2rem;
+            border-radius: 30px;
+        }
+
+        .cta-section h2 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn-large {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        .footer-info {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-info p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin: 0.3rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+
+        .footer-bottom {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .impact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                margin-top: 1.5rem;
+            }
+
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .comparison-item:last-child {
+                border-bottom: none;
+            }
+
+            .comparison-header {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ethics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .orb1, .orb2, .orb3 {
+                filter: blur(60px);
+                opacity: 0.4;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .card, .ethics-card, .impact-box {
+                padding: 1.5rem;
+            }
+
+            .timeline-item {
+                padding: 1.5rem;
+            }
+
+            .comparison-row {
+                font-size: 0.85rem;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+                margin: 2rem 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes ripple {
+            to {
+                width: 200px;
+                height: 200px;
+                opacity: 0;
+            }
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i> AI & ETIKA
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Beranda</a></li>
+                <li><a href="#tentang-ai" class="nav-link">Tentang AI</a></li>
+                <li><a href="#jenis-ai" class="nav-link">Jenis AI</a></li>
+                <li><a href="#dampak-ai" class="nav-link">Dampak AI</a></li>
+                <li><a href="#etika" class="nav-link">Etika Internet</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Artificial Intelligence & Etika Internet</h1>
+            <p class="hero-subtitle">Memahami Masa Depan Teknologi dengan Etika</p>
+            <button class="cta-btn" onclick="scrollToSection('tentang-ai')">Mulai Jelajahi</button>
+        </div>
+        <div class="hero-background">
+            <div class="orb orb1"></div>
+            <div class="orb orb2"></div>
+            <div class="orb orb3"></div>
+        </div>
+    </section>
+
+    <!-- Section 1: Sejarah AI -->
+    <section id="tentang-ai" class="section">
+        <div class="container">
+            <h2 class="section-title">Sejarah Perkembangan AI</h2>
+            <div class="timeline">
+                <div class="timeline-item glass">
+                    <div class="timeline-year">1956</div>
+                    <div class="timeline-content">
+                        <h3>Konferensi Dartmouth</h3>
+                        <p>Lahirnya AI sebagai disiplin ilmu formal</p>
+                    </div>
+                </div>
+                <div class="timeline-item glass">
+                    <div class="timeline-year">1974-1980</div>
+                    <div class="timeline-content">
+                        <h3>AI Winter</h3>
+                        <p>Era penurunan investasi dan minat terhadap AI</p>
+                    </div>
+                </div>
+                <div class="timeline-item glass">
+                    <div class="timeline-year">1997</div>
+                    <div class="timeline-content">
+                        <h3>Deep Blue</h3>
+                        <p>AI mengalahkan juara catur dunia Garry Kasparov</p>
+                    </div>
+                </div>
+                <div class="timeline-item glass">
+                    <div class="timeline-year">2016</div>
+                    <div class="timeline-content">
+                        <h3>AlphaGo</h3>
+                        <p>AI mengalahkan pemain Go profesional Lee Sedol</p>
+                    </div>
+                </div>
+                <div class="timeline-item glass">
+                    <div class="timeline-year">2022+</div>
+                    <div class="timeline-content">
+                        <h3>Era Modern</h3>
+                        <p>ChatGPT, GPT-4, dan AI Generatif lainnya</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Jenis-Jenis AI -->
+    <section id="jenis-ai" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Jenis-Jenis AI</h2>
+            <div class="cards-grid">
+                <div class="card glass">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Narrow AI</h3>
+                    <p>AI yang dirancang untuk tugas spesifik. Semua AI saat ini termasuk kategori ini.</p>
+                    <ul class="card-list">
+                        <li>• Chatbot</li>
+                        <li>• Sistem rekomendasi</li>
+                        <li>• Pengenalan wajah</li>
+                    </ul>
+                </div>
+
+                <div class="card glass">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>General AI (AGI)</h3>
+                    <p>AI yang dapat melakukan tugas intelektual apa pun yang dapat dilakukan manusia.</p>
+                    <ul class="card-list">
+                        <li>• Masih dalam penelitian</li>
+                        <li>• Belum ada implementasi</li>
+                        <li>• Target masa depan</li>
+                    </ul>
+                </div>
+
+                <div class="card glass">
+                    <div class="card-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Super AI (ASI)</h3>
+                    <p>AI yang melampaui kemampuan intelektual manusia dalam semua aspek.</p>
+                    <ul class="card-list">
+                        <li>• Konsep teoritis</li>
+                        <li>• Belum terwujud</li>
+                        <li>• Bahan spekulasi</li>
+                    </ul>
+                </div>
+
+                <div class="card glass">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Reactive Machines</h3>
+                    <p>AI tanpa memori, merespons input berdasarkan aturan yang telah ditetapkan.</p>
+                    <ul class="card-list">
+                        <li>• Deep Blue</li>
+                        <li>• Sistem game AI</li>
+                        <li>• Deterministik</li>
+                    </ul>
+                </div>
+
+                <div class="card glass">
+                    <div class="card-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Limited Memory AI</h3>
+                    <p>AI yang menggunakan data historis untuk membuat keputusan.</p>
+                    <ul class="card-list">
+                        <li>• Machine Learning</li>
+                        <li>• Chatbot modern</li>
+                        <li>• Sistem rekomendasi</li>
+                    </ul>
+                </div>
+
+                <div class="card glass">
+                    <div class="card-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Theory of Mind</h3>
+                    <p>AI yang memahami emosi, kepribadian, dan niat manusia.</p>
+                    <ul class="card-list">
+                        <li>• Masih dikembangkan</li>
+                        <li>• Psychological AI</li>
+                        <li>• Social robots</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Dampak AI -->
+    <section id="dampak-ai" class="section">
+        <div class="container">
+            <h2 class="section-title">Dampak AI Terhadap Kehidupan</h2>
+            
+            <div class="impact-container">
+                <!-- Dampak Positif -->
+                <div class="impact-box positive glass">
+                    <div class="impact-header positive-header">
+                        <i class="fas fa-thumbs-up"></i>
+                        <h3>Dampak Positif</h3>
+                    </div>
+                    <ul class="impact-list">
+                        <li>
+                            <span class="impact-icon">✓</span>
+                            <div>
+                                <h4>Kesehatan & Medis</h4>
+                                <p>Diagnosis lebih akurat, penemuan obat lebih cepat</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="impact-icon">✓</span>
+                            <div>
+                                <h4>Pendidikan</h4>
+                                <p>Pembelajaran personal, akses pendidikan lebih luas</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="impact-icon">✓</span>
+                            <div>
+                                <h4>Efisiensi Kerja</h4>
+                                <p>Otomasi tugas repetitif, produktivitas meningkat</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="impact-icon">✓</span>
+                            <div>
+                                <h4>Lingkungan</h4>
+                                <p>Optimasi sumber daya, prediksi cuaca lebih baik</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="impact-icon">✓</span>
+                            <div>
+                                <h4>Aksesibilitas</h4>
+                                <p>Teknologi bantu untuk penyandang disabilitas</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dampak Negatif -->
+                <div class="impact-box negative glass">
+                    <div class="impact-header negative-header">
+                        <i class="fas fa-thumbs-down"></i>
+                        <h3>Dampak Negatif</h3>
+                    </div>
+                    <ul class="impact-list">
+                        <li>
+                            <span class="impact-icon">✗</span>
+                            <div>
+                                <h4>Pengangguran</h4>
+                                <p>Banyak pekerjaan tergeser oleh otomasi</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="impact-icon">✗</span>
+                            <div>
+                                <h4>Privasi & Data</h4>
+                                <p>Pengumpulan data besar-besaran tanpa persetujuan</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="impact-icon">✗</span>
+                            <div>
+                                <h4>Bias & Diskriminasi</h4>
+                                <p>AI bisa mewarisi bias dari data pelatihan</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="impact-icon">✗</span>
+                            <div>
+                                <h4>Misinformasi</h4>
+                                <p>Deepfake dan konten buatan yang menyesatkan</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="impact-icon">✗</span>
+                            <div>
+                                <h4>Ketergantungan Teknologi</h4>
+                                <p>Manusia semakin pasif dan bergantung pada AI</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Etika Internet -->
+    <section id="etika" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Etika Berinternet</h2>
+            <p class="section-subtitle">Prinsip-prinsip yang harus diikuti saat menggunakan teknologi dan internet</p>
+            
+            <div class="ethics-grid">
+                <div class="ethics-card glass">
+                    <div class="ethics-number">01</div>
+                    <h3>Kejujuran & Integritas</h3>
+                    <p>Tidak menyebarkan konten palsu, hoax, atau memberikan informasi yang menyesatkan.</p>
+                    <div class="ethics-examples">
+                        <p><strong>✓ Yang Baik:</strong> Verifikasi berita sebelum membagikan</p>
+                        <p><strong>✗ Yang Buruk:</strong> Sebarkan rumor tanpa sumber</p>
+                    </div>
+                </div>
+
+                <div class="ethics-card glass">
+                    <div class="ethics-number">02</div>
+                    <h3>Privasi & Keamanan</h3>
+                    <p>Menghormati privasi orang lain dan menjaga data pribadi tetap aman.</p>
+                    <div class="ethics-examples">
+                        <p><strong>✓ Yang Baik:</strong> Tidak membagikan info pribadi orang lain</p>
+                        <p><strong>✗ Yang Buruk:</strong> Leak data pribadi seseorang</p>
+                    </div>
+                </div>
+
+                <div class="ethics-card glass">
+                    <div class="ethics-number">03</div>
+                    <h3>Menghormati Hak Cipta</h3>
+                    <p>Tidak plagiat, menghormati karya intelektual orang lain.</p>
+                    <div class="ethics-examples">
+                        <p><strong>✓ Yang Baik:</strong> Memberikan kredit dan sumber</p>
+                        <p><strong>✗ Yang Buruk:</strong> Mengklaim karya orang sebagai milik sendiri</p>
+                    </div>
+                </div>
+
+                <div class="ethics-card glass">
+                    <div class="ethics-number">04</div>
+                    <h3>Keberagaman & Inklusi</h3>
+                    <p>Menghormati perbedaan dan tidak melakukan diskriminasi.</p>
+                    <div class="ethics-examples">
+                        <p><strong>✓ Yang Baik:</strong> Merayakan keberagaman</p>
+                        <p><strong>✗ Yang Buruk:</strong> Cyberbullying atau hate speech</p>
+                    </div>
+                </div>
+
+                <div class="ethics-card glass">
+                    <div class="ethics-number">05</div>
+                    <h3>Tanggung Jawab & Akuntabilitas</h3>
+                    <p>Bertanggung jawab atas tindakan online dan konsekuensinya.</p>
+                    <div class="ethics-examples">
+                        <p><strong>✓ Yang Baik:</strong> Mengakui kesalahan dan memperbaiki</p>
+                        <p><strong>✗ Yang Buruk:</strong> Menyalahkan orang lain atas tindakan sendiri</p>
+                    </div>
+                </div>
+
+                <div class="ethics-card glass">
+                    <div class="ethics-number">06</div>
+                    <h3>Komunikasi yang Etis</h3>
+                    <p>Berkomunikasi dengan hormat dan sopan meskipun di dunia digital.</p>
+                    <div class="ethics-examples">
+                        <p><strong>✓ Yang Baik:</strong> Diskusi konstruktif dan bersahabat</p>
+                        <p><strong>✗ Yang Buruk:</strong> Flaming, trolling, atau ujaran kebencian</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Dampak Menerapkan & Mengabaikan Etika -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Dampak Penerapan vs Pengabaian Etika Internet</h2>
+            
+            <div class="comparison-table glass">
+                <div class="comparison-header">
+                    <div class="comparison-col">
+                        <h3><i class="fas fa-check-circle"></i> Menerapkan Etika</h3>
+                    </div>
+                    <div class="comparison-col">
+                        <h3><i class="fas fa-times-circle"></i> Mengabaikan Etika</h3>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <div class="comparison-item">
+                            <h4>Kepercayaan Publik</h4>
+                            <p>Membangun kepercayaan dan reputasi baik di masyarakat</p>
+                        </div>
+                    </div>
+                    <div class="comparison-col">
+                        <div class="comparison-item negative">
+                            <h4>Rusaknya Reputasi</h4>
+                            <p>Kehilangan kredibilitas dan kepercayaan masyarakat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <div class="comparison-item">
+                            <h4>Lingkungan Aman</h4>
+                            <p>Menciptakan ekosistem digital yang aman dan nyaman</p>
+                        </div>
+                    </div>
+                    <div class="comparison-col">
+                        <div class="comparison-item negative">
+                            <h4>Cybercrime & Abuse</h4>
+                            <p>Peningkatan kejahatan siber, scam, dan pelecehan online</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <div class="comparison-item">
+                            <h4>Perlindungan Data</h4>
+                            <p>Data pribadi pengguna terlindungi dengan baik</p>
+                        </div>
+                    </div>
+                    <div class="comparison-col">
+                        <div class="comparison-item negative">
+                            <h4>Penyalahgunaan Data</h4>
+                            <p>Data pribadi dicuri, dijual, atau disalahgunakan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <div class="comparison-item">
+                            <h4>Regulasi Ringan</h4>
+                            <p>Tanpa perlu regulasi ketat karena self-regulation</p>
+                        </div>
+                    </div>
+                    <div class="comparison-col">
+                        <div class="comparison-item negative">
+                            <h4>Regulasi Ketat</h4>
+                            <p>Diperlukan hukum dan regulasi yang ketat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <div class="comparison-item">
+                            <h4>Literasi Digital Meningkat</h4>
+                            <p>Masyarakat semakin cerdas menggunakan teknologi</p>
+                        </div>
+                    </div>
+                    <div class="comparison-col">
+                        <div class="comparison-item negative">
+                            <h4>Keterpurukan Digital</h4>
+                            <p>Masyarakat kebingungan dan mudah dimanipulasi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <div class="comparison-item">
+                            <h4>Kemajuan Berkelanjutan</h4>
+                            <p>Teknologi berkembang dengan sustainable dan bertanggung jawab</p>
+                        </div>
+                    </div>
+                    <div class="comparison-col">
+                        <div class="comparison-item negative">
+                            <h4>Kegagalan Sistem</h4>
+                            <p>Teknologi menjadi ancaman dan menimbulkan krisis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section glass">
+        <div class="container">
+            <h2 class="section-title">Dibuat Oleh: 
+            ABDUL GHOFUR</h2>
+            <h2 class="section-title">Absen: 1</h2>
+            <h2 class="section-title">Kelas: X TPM 2</h2>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2025 Infografis AI & Etika Internet. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll functionality
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+                hamburger.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navMenu.style.display === 'flex') {
+                    navMenu.style.display = 'none';
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .ethics-card, .impact-box, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const orbs = document.querySelectorAll('.orb');
+            const scrollY = window.scrollY;
+            
+            orbs.forEach((orb, index) => {
+                orb.style.transform = `translateY(${scrollY * (0.1 + index * 0.05)}px)`;
+            });
+        });
+
+        // Handle CTA button clicks
+        const ctaBtns = document.querySelectorAll('.cta-btn, .cta-btn-large');
+        ctaBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Add ripple effect
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const ripple = document.createElement('span');
+                ripple.style.width = ripple.style.height = '20px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.background = 'rgba(255,255,255,0.5)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.position = 'absolute';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Navigation active link indicator
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        console.log('Website AI & Etika Internet loaded successfully! 🚀');
+    </script>
+</body>
+</html>
